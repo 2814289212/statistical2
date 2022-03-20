@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<string.h>
+#pragma warning(disable:4996)
+main()
+{
+	char a[900];
+	char word[100];
+	int i = 0, j = 0, na = 0, nw = 0, cont = 0, num = 0;
+	printf("输入英文句子：");
+	while ((a[i] = getchar()) != '\n')
+	{
+		na++;//句子长度
+		i++;
+	}	
+	_strlwr(a);
+	i = 0;
+	printf("输入目标单词：");
+	while ((word[i] = getchar()) != '\n')
+	{
+		nw++;//单词长度
+		i++;
+	}
+
+	for (i = 0; i < na; i++)//查找目标单词
+	{
+		cont = 0;
+		if (a[i] == word[0])//句子内单词与目标单词首字母匹配
+		{
+			for (j = 0; j < nw; j++)
+			{
+				if (a[i + j] == word[j])
+				{
+					cont++;
+				}
+			}
+			if (cont == nw)num++;//长度匹配
+		}
+	}
+	printf("目标单词出现次数为：%d\n", num);
+}
